@@ -1,0 +1,194 @@
+#productShow .slide-prodcut img{
+	width: 100%;
+}
+#productShow .slider-nav .slick-slide{
+	padding: 2px;
+	opacity: .5;
+}
+#productShow .slider-nav .slick-slide.slick-current{
+	opacity: 1;
+	transition: .5s;
+}
+#productShow .product-title{
+	font-size: 18px;
+	margin-bottom: 0px;
+}
+#productShow .product-price{
+	margin-top: 25px;
+}
+#productShow .product-title,
+#productShow .product-price{
+	letter-spacing: 2px;
+}
+#productShow .productStatusTag{
+	position: relative;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+    letter-spacing: 0;
+    padding: 2px 15px;
+}
+#productShow span.input-group-addon{
+	display: block;
+    border-radius: 0;
+    background-color: rgba(0,0,0,.05);
+    color: #888;
+    cursor:pointer;
+}
+#product-spec-select{
+	border-radius: 0;
+}
+#product-quantity-select{
+	border-left:none;
+	border-right:none;
+	text-align: center;
+}
+#productShow .line{
+	border-top:1px solid rgba(0,0,0,.1);;
+	margin:30px 0;
+}
+#productShow .buy-info{
+	font-size: 14px;
+    color: #666;
+    margin-top: 25px;
+    margin-left: -15px;
+}
+#productShow .buy-info li{
+	margin-bottom: 5px;
+}
+.purchase-area{
+	margin-top: 50px;
+}
+.purchase-area button{
+	text-align: center;
+	width: 100%;
+	padding:10px 0;
+	border-radius: 0;
+	color:#fff;
+	cursor:pointer;
+} 
+button#addToCart{
+	background-color: #dbb878;
+	transition: .5s;
+	position: relative;
+	border:none;
+}
+button#addToCartAndgoPayment{
+	background-color: rgba(0,157,149,1);
+	position: relative;
+	border:none;
+}
+button#addToCart:before,
+button#addToCartAndgoPayment:before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #c69952;
+    position: absolute;
+    bottom: -5px;
+    z-index: -1;
+}
+button#addToCartAndgoPayment:before{
+	background-color:rgba(0, 122, 116,1);
+}
+#productShow .processBarInfo{
+	color:#666;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+#productContent{
+	margin-top: 150px;
+	border-top: 1px solid rgba(0,0,0,.1);
+}
+.nav-tap-box{
+	width: 100%;
+    height: 50px;
+    border: 1px solid rgba(0,0,0,.1);
+    background-color: #fff;
+    position: relative;
+    top:-25px;
+}
+.nav-tap-box .nav-link{
+	border-radius:0;
+	padding: 13px 30px;
+	position: relative;
+	color:#666;
+	transition: .5s;
+	letter-spacing: 2px;
+}
+.nav-tap-box .nav-link:nth-of-type(2){
+	margin: 0 15px; 
+}
+.nav-tap-box .nav-link:after{
+	content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #c69952;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    opacity: 0;
+}
+.nav-tap-box .nav-link.active{
+	background-color: #dbb878;
+}
+.nav-tap-box .nav-link.active:after{
+	opacity: 1;
+}
+#productContent .content-detail{
+	padding:15px;
+}
+
+/*temp 商品內容*/
+.content-title{
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.content-inner{
+	font-size: 14px;
+	letter-spacing: 2px;
+	line-height: 30px;
+}
+.content-sec{
+	margin: 15px 0;
+}
+
+
+/*slide*/
+#productShow .slick-arrow{
+	width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 20px;
+    border: 1px solid rgba(0,0,0,.2);
+	font-size: 20px ;
+	color :rgba(0,0,0,.5) ;
+}
+#productShow .slider-nav{
+	padding:0 30px;
+}
+#productShow .slick-prev{
+	left: 0;
+}
+#productShow .slick-next{
+	right: 0;
+}
+
+/*hover*/
+.nav-tap-box .nav-link:hover{
+	background-color: #dbb878;
+	color:#fff;
+}
+button#addToCart:hover,
+button#addToCartAndgoPayment:hover{
+	top:2px;
+}
+button#addToCart:hover:before,
+button#addToCartAndgoPayment:hover:before{
+	bottom:-3px;
+} 
+
+
