@@ -76,11 +76,11 @@ include("module/header.php")
 
 								<div class="input-group col-lg-4 offset-lg-1 col-6">
 									<div class="input-group-prepend">
-										<span class="input-group-addon"><i class="fas fa-plus"></i></span>
+										<span id="plus-quantity" class="input-group-addon"><i class="fas fa-plus"></i></span>
 									</div>
 										<input type="number" class="form-control" id="product-quantity-select" value="1">
 									<div class="input-group-append">
-										<span class="input-group-addon"><i class="fas fa-minus"></i></span>
+										<span id="minus-quantity" class="input-group-addon"><i class="fas fa-minus"></i></span>
 									</div>
 								</div>
 

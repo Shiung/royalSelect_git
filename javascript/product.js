@@ -33,4 +33,26 @@ $(document).ready(function(){
 
 		}
 	});
+
+	//商品數量選單鈕
+	$("#plus-quantity").click(function(){
+		calcOrderQuantity(1);
+	});
+	$("#minus-quantity").click(function(){
+		calcOrderQuantity(-1);
+	});
+
+	//計算數量
+	function calcOrderQuantity(a){
+		var productQuantity = $("input#product-quantity-select").val();
+		var productQuantityChange =  parseInt(productQuantity) + parseInt(a);
+		var prodcutStock =10;
+		if( productQuantityChange > prodcutStock ){ //大於庫存
+			productQuantityChange = prodcutStock;
+		}else if( productQuantityChange < 0 ){
+			productQuantityChange = 0;
+		}
+
+		$("input#product-quantity-select").val(productQuantityChange);
+	}
 });
