@@ -141,30 +141,30 @@ include("module/header.php")
 		<div class="col-12">
 			
 			<div class="content-detail row">
-				<div class="col-7 content-sec">
+				<div class="col-lg-7 content-sec">
 					<div class="content-inner">
 						一件暫時認識不足十二加油友情連結環節藝術出去電子，在這裡避免讓我體驗主流措施交流立刻投資藍色尤其是通，不禁食物旁邊做法風格貸款孩子推廣相同那種我看人才，是啊承受驚訝適應實際上，使得材料建築數據庫上述能在軍事之中不好意思消費者進了監督爆炸。
 					</div>
 					
 				</div>
-				<div class="col-5 content-sec">
+				<div class="col-lg-5 content-sec">
 					<iframe width="100%" height="315" src="https://www.youtube.com/embed/Zqgca5c2thc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</div>
 
-				<div class="col-7 content-sec">
+				<div class="col-lg-7 content-sec">
 					<img src="https://api.fnkr.net/testimg/1000x600/00CED1/FFF/?text=img+placeholder" class="img-fluid">
 				</div>
-				<div class="col-5 content-sec">
+				<div class="col-lg-5 content-sec">
 					<div class="content-title">義大利犀牛皮</div>
 					<div class="content-inner">
 						用來幾年理論只要同志早上興趣高手下載地址界面全新，樓主專門快速尤其是透露國內外分類，什麼樣收購怎麼過了主動瞬間辦理上來美好完成據說，嚴格中文售價我家快捷指定這麼情況實行自治區渠道你可以接觸看，維持更。
 					</div>
 				</div>
 
-				<div class="col-7 content-sec">
+				<div class="col-lg-7 content-sec">
 					<img src="https://api.fnkr.net/testimg/1000x600/00CED1/FFF/?text=img+placeholder" class="img-fluid">
 				</div>
-				<div class="col-5 content-sec">
+				<div class="col-lg-5 content-sec">
 					<div class="content-title">不鏽鋼設計</div>
 					<div class="content-inner">
 						用來幾年理論只要同志早上興趣高手下載地址界面全新，樓主專門快速尤其是透露國內外分類，什麼樣收購怎麼過了主動瞬間辦理上來美好完成據說，嚴格中文售價我家快捷指定這麼情況實行自治區渠道你可以接觸看，維持更。
