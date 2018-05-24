@@ -11,6 +11,6 @@ define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root');
-define('DB_DATABASE', 'tgilive');
+define('DB_DATABASE', 'royal_select');
 define('DB_PORT', '3306');
 ?>

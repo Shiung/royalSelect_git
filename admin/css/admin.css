@@ -1,0 +1,51 @@
+/*共用左邊導覽按鈕*/
+nav.side-navbar li.active a{
+	background: #e5d7c6;
+}
+nav.side-navbar a:focus, nav.side-navbar a:hover, nav.side-navbar a[aria-expanded="true"],nav.navbar a.menu-btn:hover{
+	background: #e5d7c6;
+}
+nav.side-navbar li ul.collapse a{
+	border-color: #e5d7c6;
+}
+.text-primary{
+	color:#e5d7c6 !important;
+}
+/*datatable 共用*/
+div.dt-buttons{
+	margin:0 0 10px 10px;
+}
+div.dt-buttons button.dt-button{
+	margin-bottom: 0;
+	padding: 2px 10px ;
+}
+.dataTable-area{
+	padding: 10px;
+}
+
+/*======bootstrap switch======*/
+.switchButtonColor .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary,.switchButtonColor .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary{
+	background-color: #e5d7c6;
+}
+
+/*關閉左上方的summernote選單*/
+.popover{
+	display: none;
+}
+
+
+
+/*======product.php========*/
+#productSelects,#cateSelects,#productStatus{
+	width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+}
+#productSelectNone,#productSelectConfirm{
+	margin: 0 5px;
+}
+section.charts .product .demo .productSelectBox{
+	margin-bottom: 10px;
+}
+
+
