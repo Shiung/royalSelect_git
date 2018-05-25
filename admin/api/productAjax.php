@@ -77,7 +77,27 @@ switch ( $_REQUEST["status"] ) {
 		break;	
 
 	case 'updateSpec':
-		
+		$table = "product_spec" ;
+		$productSpecNo = isset($_REQUEST[""])? $_REQUEST[""] : null ;
+		$pInfo = $_REQUEST["product_spec_info"];
+		if( $productSpecNo == null ){ //新增
+			$item = array(
+				"product_no" =>$pid ,
+				"product_spec_info"=> $pInfo ,
+				"product_spec_createtime"=>time()
+			);
+			$checkColumn = array("product_spec_no");
+			$result = $p -> updateSpec($table,$item,$checkColumn);
+			echo json_encode($result);
+		}else{ //修改
+			$item = array(
+				"product_spec_no" => $productSpecNo,
+				"product_spec_info"=> $pInfo ,
+			);
+			$checkColumn = array("product_spec_no");
+			// print_r($p -> updateSpec($table,$item,$checkColumn));
+			echo "修改";
+		}
 		break;
 	case 'deleteSpec':
 		

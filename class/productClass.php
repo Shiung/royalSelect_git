@@ -49,12 +49,14 @@ class productObj{
 					$this->updatetime = $value["product_updatetime"];
 					for ($i= 1; $i <= 5; $i++) { 
 						if(trim($value["img".$i]) != null || trim($value["img".$i]) != ""){
-							array_push( $this->image , $value["img".$i] );
+							// array_push( $this->image , $value["img".$i] );
+							$this->image["img".$i] = $value["img".$i];
 						};
 					};
 					for ($i= 1; $i <= 3; $i++) { 
 						if(trim($value["prodcut_price".$i]) != null || trim($value["prodcut_price".$i]) != ""){
-							array_push( $this->price , $value["prodcut_price".$i] );
+							// array_push( $this->price , $value["prodcut_price".$i] );
+							$this->price["price".$i] = $value["prodcut_price".$i];
 						};
 					};
 					$this->specUseInfo($pid);

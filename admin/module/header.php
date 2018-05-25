@@ -70,12 +70,17 @@ $orderLink = "order.php";
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
 
-
+    <!-- datePick -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
 
 
      <!-- user style -->
     <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script type="text/javascript" src="javascript/admin.js"></script>
     <script type="text/javascript" src="javascript/datatable.js"></script>
+    <script type="text/javascript" src="javascript/summerNote.js"></script>
 
     <!-- ========bootstrap-switch========= -->
     <link rel="stylesheet" href="../plugIn/bootstrap/css/bootsrap-switch/bootstrap-switch.min.css">
@@ -93,7 +98,7 @@ $orderLink = "order.php";
     <nav class="side-navbar">
       <div class="side-navbar-wrapper">
         <div class="sidenav-header d-flex align-items-center justify-content-center">
-          <div class="sidenav-header-inner text-center"><img src="" alt="img" class="img-fluid" style="height:auto;">
+          <div class="sidenav-header-inner text-center"><img src="../img/frontEnd/logo-w.png" alt="img" class="img-fluid" style="height:auto;">
             <h2 class="h5 text-uppercase"><?php //echo $_SESSION["adm_name"]; ?></h2>
             <span class="text-uppercase">
               <?php 
