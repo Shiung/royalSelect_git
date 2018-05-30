@@ -46,17 +46,29 @@ class DB {
 
 	public function DB_Insert($table,$data){
 		$pdo = $this->pdo;
-		$sql="insert into ".$table." (".implode(',',array_keys($data)).") values(:".implode(',:',array_keys($data)).")";
-		$object = $pdo->prepare($sql);
-		foreach ($data as $key => $value) {
-			$object ->bindValue(":".$key,$value);
+		try {
+			//啟動交易系統
+			$pdo->beginTransaction();
+			//寫入主要檔案
+			$sql="insert into ".$table." (".implode(',',array_keys($data)).") values(:".implode(',:',array_keys($data)).")";
+			$object = $pdo->prepare($sql);
+			foreach ($data as $key => $value) {
+				$object ->bindValue(":".$key,$value);
+			}
+			$result = $object -> execute();
+			$this->lastId = $pdo->lastInsertId();
+			$pdo->commit();
+			if(!$result){
+				$this->error = $object -> errorCode();
+				return false;
+			}
+			return $result ;
+		} catch (PDOException $e) {
+			$pdo->rollBack();
+			$this->error = $e -> getMessage();
+			return false;
 		}
-		$result = $object -> execute();
-		$this->lastId = $pdo->lastInsertId();
-		if(!$result){
-			$this->error = $object -> errorCode();
-		}
-		return $result ;
+		
 	}
 
 	public function DB_UpdateOnly($table,$data,$checkColumn){
