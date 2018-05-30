@@ -1,0 +1,148 @@
+.cart-title{
+	font-size: 22px;
+    text-align: left;
+    margin: 50px 0;
+    font-weight: bold;  
+}
+
+#cartShow .productStatusTag{
+	position: relative;
+    top: 0;
+    left: 0;
+    margin-left: 20px;
+    letter-spacing: 0;
+    padding: 2px 15px;
+}
+#cartShow .cart-area{
+	margin-bottom: 15px;
+	padding: 15px 0 ;
+	background-color: #efefef;
+}
+#cartShow #product-spec-select {
+	margin-bottom: 15px;
+}
+
+#cartShow span.input-group-addon{
+	display: block;
+    border-radius: 0;
+    background-color: rgba(0,0,0,.05);
+    color: #888;
+    cursor:pointer;
+}
+.product-quantity-select{
+	border-left:none;
+	border-right:none;
+	text-align: center;
+}
+#checkOutBtn{
+	cursor: pointer;
+	border:1px solid #dbb878;
+	color:#dbb878;
+}
+#checkOutBtn:focus,
+.cart-option .delete-btn:focus{
+	outline: none;
+	box-shadow:none;
+}
+.cart-option{
+	margin-top:15px ;
+}
+.line{
+	height: 2px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+.cart-option .delete-btn{
+	cursor: pointer;
+	color:#999;
+	font-size: 14px;
+}
+.cart-option .delete-btn svg{
+ 	margin-right: 5px;
+}
+.price-area{
+	margin: auto 0 ;
+}
+.price{
+	text-align: right;
+	color:#888;
+}
+.cartWithoutList{
+	margin-bottom: 150px;
+}
+
+/*deliver.php*/
+.cart-list{
+	position: relative;
+}
+.order-list{
+	margin-bottom: 50px;
+}
+.priceZone{
+	margin-top: 15px;
+}
+.ct{
+	font-size: 12px;
+	color:#999;
+}
+.cc{
+	font-size: 14px;
+	text-align: right;
+
+}
+.cp{
+	font-size: 16px;
+	color:#f00;
+	text-align: right;
+}
+.productZone .card-body > .row:nth-of-type(2){
+	margin-top: 15px;
+}
+.checkOutFinal #checkOutBtn{
+    margin: 30px auto 0px;
+    padding: 2px 15px;
+    font-weight: 300;
+}
+.invoiceInfo {
+    background-color: #efefef;
+    padding: 10px;
+}
+label[for='invoiceCheck']{
+	font-size: 12px;
+    padding-left: 0;
+    vertical-align: text-top;
+}
+@media screen and ( min-width : 992px ){
+	.order-list{
+		position: absolute;
+		right: 0;
+	}
+}
+
+
+ /*購物車步驟*/
+.cartMenu .step {
+    height: 50px;
+    border-left: 1px solid #fff;
+    background-color: #dbb878;
+    text-align: center;
+}
+.cartMenu .step li {
+    color: #fff;
+    display: block;
+    line-height: 30px;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 100;
+}
+.cartMenu .step.active {
+    background-color: #c69952;
+}
+
+
+/*hover*/
+#checkOutBtn:hover{
+	background-color: #dbb878;
+	color:#fff;
+}
+

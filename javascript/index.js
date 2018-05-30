@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	// tooltip
-	$('.favor').tooltip();
+	$(".favor").tooltip();
 	$(".addCart").tooltip();
+	$(".delete-btn").tooltip();
 
 	//process bar
 	$(".processBar").each(function(){
@@ -35,7 +36,7 @@ $(document).ready(function(){
 	});
 
 	//產品轉址
-	$(".product-area").click(function(){
-		location.href = "product.php";
+	$(".product-area .img-box").click(function(){
+		$(this).find(".productForm").submit();
 	});
 });

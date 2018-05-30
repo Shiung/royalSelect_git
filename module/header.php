@@ -1,3 +1,27 @@
+<?php  
+ob_start();
+session_start();
+date_default_timezone_set("Asia/Taipei");
+
+// db
+include("config.php");
+include("model/DB.php");
+include("class/productClass.php");
+include("class/orderClass.php");
+
+// ===檢查客戶端是否有關閉cookie=====
+// 先儲存cookie確認碼
+setcookie("CookieCheck","OK",time()+3600,"/");
+//購物車清單
+if( isset($_COOKIE["CookieCheck"]) ){ //有cookie可用
+	$order = new orderObj(1);
+	$oList = $order->brief();
+}else{  //cookie關閉
+	$order = new orderObj(2);
+	$oList = $order->brief();
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>

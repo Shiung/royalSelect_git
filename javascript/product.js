@@ -49,10 +49,60 @@ $(document).ready(function(){
 		var prodcutStock =10;
 		if( productQuantityChange > prodcutStock ){ //大於庫存
 			productQuantityChange = prodcutStock;
-		}else if( productQuantityChange < 0 ){
-			productQuantityChange = 0;
+		}else if( productQuantityChange < 1 ){
+			productQuantityChange = 1;
 		}
 
 		$("input#product-quantity-select").val(productQuantityChange);
+	}
+
+
+	//加入購物車
+	$("#addToCart").click(function(){
+		addToCart($(this),true);
+	});
+	//直接購物車
+	$("#addToCartAndgoPayment").click(function(){
+		addToCart($(this),true);
+	});
+
+	function addToCart(obj,goCart){
+		var pid = $("input[name='product_no']").val();
+		var pQuan = $("input#product-quantity-select").val();
+		var pSpec = $("select#product-spec-select").val();
+		var pPrice = $("input[name='product_price']").val();
+		var pPrice_status = $("input[name='pPrice_status']").val();
+		var status = "addCartOnly";
+		$.ajax({
+			url : "api/cartAjax.php",
+			data : {product_no : pid,status : status ,product_spec_no :pSpec,quanty : pQuan, price: pPrice,price_status : pPrice_status },
+			type : "get",
+		    cache : false,
+		    success : function(result){
+			    if (goCart){
+				    location.replace("cart.php");
+			    }else{
+				  	if(result){ 
+			    		swal({
+						  title: "已加入購物車",
+						  icon: "success",
+						}).then( function(confrim) {
+						  checkOrderCookie();
+						  location.reload();
+						});
+			    	}else{ 
+			    		alert("section");
+			    	} 	
+			    }
+		    },
+		    error : function(error){
+			    // if (goCart){
+			    // 	location.replace("cart.php");
+			    // }else{
+				   // alert("傳送失敗"); 
+			    // }
+			    console.log(error);
+		    } 
+		});
 	}
 });

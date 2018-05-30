@@ -1,8 +1,31 @@
 <?php 
-// 測試
-include("testInfo.php");
-// 測試
+
 include("module/header.php");
+
+//測試//
+//-----假資料
+// include("testInfo.php");
+
+//-----假資料資料庫
+$db = new DB();
+$sql = "SELECT product_no from product ";
+$result = $db->DB_query($sql);
+$order = array(
+	"3" => "30",
+	"4" => "40",
+	"5" => "20",
+	"6" => "30",
+	"7" => "30",
+	);
+$products = [];
+foreach ($result as $key => $value) {
+	$pid = $value["product_no"];
+	$p = new productObj($pid); 
+	$pro = $p->brief();
+	$products[$pid] = $pro;
+	$products[$pid]["order"] = $order[$pid];
+}
+//測試//
 ?>
 
 <section id="s1">
@@ -22,13 +45,13 @@ include("module/header.php");
 	<div class="container">
 		<div class="row">
 			<?php 
-			foreach ($product as $key => $value) {
+			foreach ($products as $key => $value) {
 			?>
 			<div class="col-xl-6 col-md-4 col-6">
 				<div class="product-area row">
 					<div class="col-xl-6 col-12">
 						<div class="img-box">
-							<div class="img-box-area" style="background-image: url('<?php echo $value["img"]; ?>')"></div>	
+							<div class="img-box-area" style="background-image: url('<?php echo "img/product/".$value["product_img"]["img1"]; ?>')"></div>	
 
 							<!-- hover -->
 							<div class="productHover">
@@ -44,14 +67,19 @@ include("module/header.php");
 
 							<!-- product status tag -->
 							<div class="productStatusTag">團購中</div>
+
+							<!-- form -->
+							<form class="productForm" action="product.php" method="get">
+								<input type="hidden" name="product_no" value="<?php echo $value["product_no"]; ?>">
+							</form>
 						</div>
 					</div> 
 					<div class="col-xl-6 col-12 productFlex">
-						<div class="product-title"><?php echo $value["prodcut_name"] ;?></div>
+						<div class="product-title"><?php echo $value["product_name"] ;?></div>
 						<div class="product-content">
-							<?php echo $value["product_descibe"]; ?>
+							<?php echo $value["product_describe"]; ?>
 						</div>
-						<div class="product-price">一口價<span class="priceShow">$<?php echo $value["price"] ;?></span></div>
+						<div class="product-price">一口價<span class="priceShow">$<?php echo number_format($value["price"]["price1"]) ;?></span></div>
 					</div>
 
 					<div class="col-12">
@@ -64,7 +92,8 @@ include("module/header.php");
 
 					<!-- new tag -->
 					<div class="newTag">NEW</div>
-				</div>
+
+				</div> <!-- end .product-area -->
 			</div>
 			<?php }  ?>	
 
@@ -79,57 +108,57 @@ include("module/header.php");
 		<div class="slide-index">
 			<div class="success-product">
 				<div class="img-box">
-					<div class="img-box-area" style="background-image: url('img/frontEnd/product-test1.jpg')"></div>	
+					<div class="img-box-area" style="background-image: url('img/product/product-test1.jpg')"></div>	
 
 					<div class="productStatus bg-blue-process">
 						靠港日剩下35天
 					</div>
 				</div>
-				<div class="product-title"><?php echo $value["prodcut_name"] ;?></div>
+				<div class="product-title"><?php echo $value["product_name"] ;?></div>
 				<div class="product-price"><span class="priceShow">$10000</span></div>
 			</div>
 			<div class="success-product">
 				<div class="img-box">
-					<div class="img-box-area" style="background-image: url('img/frontEnd/product-test2.jpg')"></div>	
+					<div class="img-box-area" style="background-image: url('img/product/product-test2.jpg')"></div>	
 
 					<div class="productStatus bg-blue-process">
 						靠港日剩下15天
 					</div>
 				</div>
-				<div class="product-title"><?php echo $value["prodcut_name"] ;?></div>
+				<div class="product-title"><?php echo $value["product_name"] ;?></div>
 				<div class="product-price"><span class="priceShow">$10000</span></div>
 			</div>
 			<div class="success-product">
 				<div class="img-box">
-					<div class="img-box-area" style="background-image: url('img/frontEnd/product-test3.jpg')"></div>	
+					<div class="img-box-area" style="background-image: url('img/product/product-test3.jpg')"></div>	
 
 					<div class="productStatus bg-blue-process">
 						已靠港
 					</div>
 				</div>
-				<div class="product-title"><?php echo $value["prodcut_name"] ;?></div>
+				<div class="product-title"><?php echo $value["product_name"] ;?></div>
 				<div class="product-price"><span class="priceShow">$10000</span></div>
 			</div>
 			<div class="success-product">
 				<div class="img-box">
-					<div class="img-box-area" style="background-image: url('img/frontEnd/product-test4.jpg')"></div>	
+					<div class="img-box-area" style="background-image: url('img/product/product-test4.jpg')"></div>	
 
 					<div class="productStatus bg-green-deliver">
 						出貨中
 					</div>
 				</div>
-				<div class="product-title"><?php echo $value["prodcut_name"] ;?></div>
+				<div class="product-title"><?php echo $value["product_name"] ;?></div>
 				<div class="product-price"><span class="priceShow">$10000</span></div>
 			</div>
 			<div class="success-product">
 				<div class="img-box">
-					<div class="img-box-area" style="background-image: url('img/frontEnd/product-test5.jpg')"></div>	
+					<div class="img-box-area" style="background-image: url('img/product/product-test5.jpg')"></div>	
 
 					<div class="productStatus bg-green-deliver">
 						出貨中
 					</div>
 				</div>
-				<div class="product-title"><?php echo $value["prodcut_name"] ;?></div>
+				<div class="product-title"><?php echo $value["product_name"] ;?></div>
 				<div class="product-price"><span class="priceShow">$10000</span></div>
 			</div>
 
