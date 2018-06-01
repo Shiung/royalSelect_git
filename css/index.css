@@ -48,6 +48,12 @@ header{
 	top: 0;
 	right: 0;
 }
+.nav-user svg path{
+	fill: #fff;
+    stroke: #000;
+    stroke-width: 40px;
+}
+.nav-user svg,
 .nav-cart svg{
 	width: 25px;
 }
@@ -57,6 +63,7 @@ header{
 .nav-search{
 	margin-right: 50px;
 }
+.nav-user,
 .nav-cart,
 .nav-search{
 	padding:15px;
@@ -334,7 +341,9 @@ footer .first-area a:hover{
    	 	margin-bottom: 50px;
 	}
 
-	.nav-cart, .nav-search {
+	.nav-user,	
+	.nav-cart,
+	.nav-search {
 		padding: 5px;
 	}
 	.nav-search {
