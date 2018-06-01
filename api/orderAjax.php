@@ -73,6 +73,7 @@ switch ($_REQUEST["status"]) {
 					"order_tel" => $orderTel,
 					"product_price" => $svalue["price"] ,
 					"order_quantity" => $svalue["quanty"] ,
+					"order_price" => (int)$svalue["price"]*(int)$svalue["quanty"],
 					"product_no" => $svalue["product_no"] ,
 					"product_name" => $svalue["product_name"] ,
 					"product_spec_no" => $svalue["product_spec_no"] ,
