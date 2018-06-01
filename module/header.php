@@ -80,8 +80,12 @@ if( isset($_COOKIE["CookieCheck"]) ){ //有cookie可用
   </head>
 <body>
 <header>
-	<div class="nav-logo text-center">
-		<img src="img/frontEnd/logo.png" class="img-fluid">
+	<div class="d-flex justify-content-center">
+		<div class="nav-logo">
+			<a href="index.php">
+				<img src="img/frontEnd/logo.png" class="img-fluid">
+			</a>
+		</div>
 	</div>
 	<div class="nav-selection d-flex justify-content-end align-items-center">
 		<div class="nav-cart fa-lg"><!-- <i class="fas fa-shopping-bag"></i> -->
