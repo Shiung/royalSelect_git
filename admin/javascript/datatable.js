@@ -122,4 +122,64 @@ $(document).ready(function(){
 	} //-----end callback
 
 
+	orderTableServer = $("#dataTableServer-order").DataTable({
+		"lengthMenu": [[10, 20, 30, -1], [10, 20, 30, "All"]],
+		"responsive": true,
+		"order": [[ 0, "desc" ]],
+        "dom": 'lBfrtip',
+        "buttons": [
+            {
+                "extend": 'copyHtml5',
+                "exportOptions": {
+                    "columns": [ 0, ':visible' ]
+                }
+            },
+            {
+                "extend": 'excelHtml5',
+                "exportOptions": {
+                    "columns": ':visible'
+                }
+            },
+            'colvis'
+        ]   ,  
+		"processing": true,
+		"ajax": "api/datatableOrderAjaxServer.php",
+         "columns": [
+            { "data": "order_no" },
+            { "data": "order_group" },
+            { "data": function(source, type, val){
+				var status ='';
+                if( source.order_pay_status == 0 ){
+					status = '未付款';
+				}
+                return status;
+            }},
+            { "data": function(source, type, val){
+				var status ='';
+            	if( source.order_status == 0 ){
+					status = '未入倉';
+				}
+				return status;
+            }},
+            { "data": "order_recipient" },
+			{ "data": function(source, type, val){
+				var createTime = source.order_createtime;
+				var date = new Date(parseInt(createTime)*1000);
+				var time = date.getFullYear()+'-'+("0"+(date.getMonth()+1)).slice(-2)+'-'+("0"+date.getDate()).slice(-2)+' '+("0"+date.getHours()).slice(-2)+':'+("0"+date.getMinutes()).slice(-2)+':'+("0"+date.getSeconds()).slice(-2);
+				return time;
+			}},
+			{ "data": function(source, type, val){
+				var price =  source.order_price;
+				return "$"+price;
+			}},
+            { "data": function(source, type, val){
+            	return "";
+            }}
+
+        ],
+        "fnDrawCallback" : function(oSettings){
+        	$("#dataTableServer-product").find("tbody tr").addClass("product");
+        	callback();
+        }
+	});	
 });

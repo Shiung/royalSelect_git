@@ -19,32 +19,29 @@
 				
 
              <!-- =====dataTable====== -->
-	             <div class="demo">
-	             	<div class="row" style="margin-bottom:30px;"> 			             	
-    							<table id="dataTableServer" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    								<thead>
-    									<tr>
-    										<th>編號</th>
-    										<th>產品編號</th>
-    		                <th>產品名稱</th>
-    		                <th>品牌</th>
-    		                <th  style="width:100px;">標籤</th>
-                        <!-- <th  style="width: 60px;">本月推薦</th> -->
-                        <th  style="width: 100px;">行銷活動</th>
-                        <!-- <th  style="width: 60px;">優惠劵</th> -->
-    		                <th  style="width: 25px;">狀態</th>
-    		                <th  style="width: 60px;">更新時間</th>	
-    		                <th  style="width: 90px;"></th>					               
-    									</tr>
-    								</thead>
-    								
-    						    	<tbody>
-    						    	</tbody>
-    							</table>
+                <div class="dataTable-area">
+                    <table id="dataTableServer-order" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>no</th>
+                          <th>訂單編號</th>
+                          <th>付款狀態</th>
+                          <th>訂單狀態</th>
+                          <th>買家</th>
+                          <th>下單時間</th>
+                          <th>下單金額</th>
+                          <th></th>					               
+                        </tr>
+                      </thead>
+                      
+                        <tbody>
+                        </tbody>
+                    </table>
     							
-    						</div>	
+                 
+                </div>
              <!-- =====/dataTable====== -->
-             	</div>
+             	
             </div> 
           </div>
         </div>

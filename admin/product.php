@@ -19,50 +19,47 @@
 				
 
              <!-- =====dataTable====== -->
-			             <div class="dataTable-area">
-			             	<div class="row" style="margin-bottom:30px;">
-			             		<div class="col-6 productSelectBox">
-			             			<button id="productSelectAll" class="btn-sm btn-outline-info">全選</button>
-				             		<button id="productSelectNone" class="btn-sm btn-outline-info">全不選</button>
-				             		<select id="productSelects" class="form-control form-control-sm">
-				             			<option value disabled selected>批次處理動作</option>
-				             			<option value="1" >上架</option>
-				             			<option value="2" >下架</option>
-				             		</select>
-				             		<button id="productSelectConfirm" class="btn-sm btn-outline-success">確認</button>
-								
-				             	</div>
-				             	<div class="col-6 text-right">
+                  <div class="dataTable-area">
+                    <div class="row" style="margin-bottom:30px;">
+                      <div class="col-6 productSelectBox">
+                          <button id="productSelectAll" class="btn-sm btn-outline-info">全選</button>
+                          <button id="productSelectNone" class="btn-sm btn-outline-info">全不選</button>
+                          <select id="productSelects" class="form-control form-control-sm">
+                              <option value disabled selected>批次處理動作</option>
+                              <option value="1" >上架</option>
+                              <option value="2" >下架</option>
+                          </select>
+                          <button id="productSelectConfirm" class="btn-sm btn-outline-success">確認</button>
+                      </div>
+                      <div class="col-6 text-right">
                         <span>商品狀態</span>
-                        <select id="productStatus" class="form-control form-control-sm mr-1">
-                          <option value="2" selected>所有商品</option>
-                          <option value="1">銷售中</option>
-                          <option value="0">下架</option>
-                        </select>  
-				             		<button id="productCreatebutton" class="btn-sm btn-outline-success" data-toggle="modal" data-target="#producrCreateNew">新增商品</button>
-				             	</div>
-			             	</div>
-			             	
-
-			             			             	
-							<table id="dataTableServer-product" class="table table-striped table-bordered" cellspacing="0" width="100%">
-								<thead>
-									<tr>
-										<th>系統編號</th>
-										<th>產品編號</th>
-		                <th>產品名稱</th>
-		                <th>狀態</th>
-		                <th>建立時間</th>	
-                    <th>更新時間</th> 
-		                <th></th>					               
-									</tr>
-								</thead>
-								
-						    	<tbody>
-						    	</tbody>
-							</table>
-							
-						</div>	
+                            <select id="productStatus" class="form-control form-control-sm mr-1">
+                                <option value="2" selected>所有商品</option>
+                                <option value="1">銷售中</option>
+                                <option value="0">下架</option>
+                            </select>  
+                        <button id="productCreatebutton" class="btn-sm btn-outline-success" data-toggle="modal" data-target="#producrCreateNew">新增商品</button>
+                      </div>
+                    </div>
+ 			             	
+                    <table id="dataTableServer-product" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>系統編號</th>
+                          <th>產品編號</th>
+                          <th>產品名稱</th>
+                          <th>狀態</th>
+                          <th>建立時間</th>	
+                          <th>更新時間</th> 
+                          <th></th>					               
+                        </tr>
+                      </thead>
+                      
+                        <tbody>
+                        </tbody>
+                    </table>
+                    
+                  </div>	
              <!-- =====/dataTable====== -->
              	</div>
             </div> 
