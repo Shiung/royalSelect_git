@@ -39,4 +39,51 @@ $(document).ready(function(){
 	$(".product-area .img-box").click(function(){
 		$(this).find(".productForm").submit();
 	});
+
+	//login nav
+	$(".nav-user").click(function(){
+		$(this).attr("data-toggle","modal");
+		$(this).attr("data-target","#loginBox");
+
+		$("#loginBox .label-custom").removeClass("active");
+		if($("#loginBox .modal-body form #login-username").val().trim().length != 0 ){ //有輸入值(帳號)
+			$("#loginBox .modal-body form #login-username").siblings(".label-custom").addClass("active");
+			$("#loginBox .modal-body form .login-username-describe").show(300);
+		}
+
+		if($("#loginBox .modal-body form #login-password").val().trim().length != 0){ //有輸入值(密碼)
+			$("#loginBox .modal-body form #login-password").siblings(".label-custom").addClass("active");
+			$("#loginBox .modal-body form .login-password-describe").show(300);
+		}
+	});
+	$("#loginBox .modal-body form input").click(function(){
+		$("#loginBox .label-custom").removeClass("active");
+		var loginLabel = $(this).siblings(".label-custom");
+		if(loginLabel.attr("class").search("active") != -1){
+			loginLabel.removeClass("active");
+		}else{			
+			loginLabel.addClass("active");
+		}
+
+		if($("#loginBox .modal-body form #login-username").val().trim().length != 0 ){ //有輸入值(帳號)
+			$("#loginBox .modal-body form #login-username").siblings(".label-custom").addClass("active");
+		}
+
+		if($("#loginBox .modal-body form #login-password").val().trim().length != 0){ //有輸入值(密碼)
+			$("#loginBox .modal-body form #login-password").siblings(".label-custom").addClass("active");
+		}
+	});
+
+	$("#loginBox .modal-body form #login-username").keyup(function(){
+		if($("#loginBox .modal-body form #login-username").val().trim().length != 0 ){ //有輸入值(帳號)
+			$("#loginBox .modal-body form .login-username-describe").show(300);
+			$("#loginBox .modal-body form #login-username").siblings(".label-custom").addClass("active");
+		}
+	});	
+	$("#loginBox .modal-body form #login-password").keyup(function(){
+		if($("#loginBox .modal-body form #login-password").val().trim().length != 0){ //有輸入值(密碼)
+			$("#loginBox .modal-body form .login-password-describe").show(300);
+			$("#loginBox .modal-body form #login-password").siblings(".label-custom").addClass("active");
+		}
+	});	
 });

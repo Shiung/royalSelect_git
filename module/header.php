@@ -20,6 +20,19 @@ if( isset($_COOKIE["CookieCheck"]) ){ //有cookie可用
 	$order = new orderObj(2);
 	$oList = $order->brief();
 }
+
+//memToken check
+$userStatus = '' ;
+if(isset($_SESSION["memNo"]) === false){
+	if (isset($_COOKIE["rs_token"])) {
+		$_SESSION["where"] = $_SERVER["PHP_SELF"];
+
+		header('Location: memTokenCheck.php');
+	}	
+}else{
+	$userStatus = 'active';
+}
+
 ?>
 
 <!doctype html>
@@ -88,7 +101,7 @@ if( isset($_COOKIE["CookieCheck"]) ){ //有cookie可用
 		</div>
 	</div>
 	<div class="nav-selection d-flex justify-content-end align-items-center">
-		<div class="nav-user fa-lg">
+		<div class="nav-user fa-lg <?php echo $userStatus;?>">
 			<svg  viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1600 1405q0 120-73 189.5t-194 69.5h-874q-121 0-194-69.5t-73-189.5q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q9 0 42 21.5t74.5 48 108 48 133.5 21.5 133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z"/></svg>
 		</div>
 		<div class="nav-cart fa-lg"><!-- <i class="fas fa-shopping-bag"></i> -->
@@ -100,3 +113,30 @@ if( isset($_COOKIE["CookieCheck"]) ){ //有cookie可用
 	</div>
 	
 </header>
+
+<!-- Modal (登入)-->
+<div class="modal fade" id="loginBox" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	         <div class="loginTitle"><img src="img/frontEnd/logo-w.png" class="img-fluid" style="width:100px;"></div>
+	      </div>
+	      <div class="modal-body text-center">
+            	<form id="login-form" method="post">
+	              <div class="form-group">
+	                <label for="login-username" class="label-custom">帳號  <small>Account</small></label>
+	                <input id="login-username" type="text" name="loginUsername" required="">
+	                <div class="login-username-describe" style="display: none;">請輸入E-mail</div>
+	              </div>
+	              <div class="form-group">
+	                <label for="login-password" class="label-custom">密碼  <small>Password</small></label>
+	                <input id="login-password" type="password" name="loginPassword" required="">
+	              </div> 
+	            </form>
+	            <button id="loginButton" href="#" class="btn btn-primary mb-2" style="display: block; width:100%;">登入</button>
+	            <button id="registerButton" href="#" class="btn btn-primary mb-4" style="display: block; width:100%;" >註冊</button>
+	            <a href="#" id="forgot-pass" >Forgot Password?</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>

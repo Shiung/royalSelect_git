@@ -76,6 +76,92 @@ header{
 .nav-logo img{
 	width: 80px;
 }
+/* 登入光箱 */
+#loginBox .modal-header{
+	background-color: #ae8f68;
+}
+#loginBox .loginTitle{
+	margin: auto;
+    width: 50px;
+}
+#loginBox .modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    top: 50vh;
+    margin: 0 auto;
+    max-width: 320px;
+}
+#loginBox .modal-body{
+	padding-left: 45px;
+	padding-right: 45px;
+} 
+#loginBox .modal-body .form-group{
+	position: relative;
+	text-align: center;
+}
+#loginBox .modal-body .form-group .login-username-describe{
+	color:#ccc;
+	font-size: 12px;
+}
+#loginBox .modal-body form input{
+	outline: none;
+    border-radius: 0;
+    width: 100%;
+    margin-right: 10px;
+    padding: 6px 10px;
+    color: #333;
+    font-weight: 300;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    margin-bottom: 18px;
+}
+#loginBox .modal-body form .label-custom{
+	font-size: 14px;
+    font-weight: 300;
+    color: #aaa;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 100%;
+    cursor: text;
+    transition: all 0.4s;
+    cursor: default;
+}
+#loginBox .modal-body form .label-custom.active{
+	top: 0px;
+	color:#db363d;
+	font-size: 16px;
+    font-weight: 500;
+}
+#loginBox .modal-body button.btn-primary{
+	background-color:  #ae8f68;
+	border-color:  #ae8f68;
+	transition: .3s;
+	cursor: pointer;
+}
+#loginBox .modal-body button.btn-primary:focus{
+	outline: none;
+	box-shadow: none; 
+}
+#loginBox .modal-body button.btn-primary:hover{
+	background-color:  #fff;
+	color:#ae8f68;
+}
+#loginBox .modal-body .login-username-describe{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	cursor: default;
+}
+#loginBox a{
+	color:#db363d;
+}
+
 
 .banner{
 	width: 100%;
