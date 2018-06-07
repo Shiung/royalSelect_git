@@ -1,0 +1,15 @@
+#registerConfirmButton{
+    background-color:  #fff;
+    border-color:  #dbb878;
+    color:#dbb878;
+	transition: .3s;
+	cursor: pointer;
+}
+#registerConfirmButton:focus{
+	outline: none;
+	box-shadow: none; 
+}
+#registerConfirmButton:hover{
+	background-color:  #dbb878;
+	color:#fff;
+}

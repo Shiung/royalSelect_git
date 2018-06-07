@@ -53,6 +53,10 @@ header{
     stroke: #000;
     stroke-width: 40px;
 }
+.nav-user.active svg path{
+	fill: #ae8f68;
+    stroke: #ae8f68;
+}
 .nav-user svg,
 .nav-cart svg{
 	width: 25px;
