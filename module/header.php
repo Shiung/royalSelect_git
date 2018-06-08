@@ -22,8 +22,8 @@ if( isset($_COOKIE["CookieCheck"]) ){ //有cookie可用
 }
 
 //memToken check
-$userStatus = '' ;
-if(isset($_SESSION["memNo"]) === false){
+$userStatus = 'unactive' ;
+if(isset($_SESSION["rs_memNo"]) === false){
 	if (isset($_COOKIE["rs_token"])) {
 		$_SESSION["where"] = $_SERVER["PHP_SELF"];
 

@@ -1,4 +1,8 @@
-<?php include("module/header.php"); ?>
+<?php include("module/header.php"); 
+if(isset($_SESSION["rs_memNo"]) === true){
+	header('Location: index.php');
+}
+?>
 
 <section id="registerShow">
 	<nav aria-label="breadcrumb" class="breadcrumb-area">

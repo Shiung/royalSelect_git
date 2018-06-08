@@ -71,9 +71,23 @@ class userObj{
 		}
     }
     
-    public function token(){ //確認是否有token 
+	public function memLoginCheck( $mail , $psw ){ //確認帳號密碼是否存在
+		$mem_email = $mail;
+		$mem_psw = $psw;
+        $db = new DB();
+        $sql = "SELECT * from member where mem_email = :mem_email and mem_password = :mem_password ";
+        $dic = array(
+			":mem_email" => $mem_email ,
+			":mem_password" => $mem_psw
+		);
+		$result = $db -> DB_Query($sql,$dic);
+		if( $result ){
+            return $result ;//"有帳號"; 回傳會員資料
+        }else{
+            return false ;//"無帳號";
+		} 
+	}
 
-    }
 
     public function memCheck( $mail ){ //確認會員帳號是否已經使用
         $mem_email = $mail;

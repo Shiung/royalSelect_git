@@ -51,10 +51,10 @@ if(isset($_COOKIE['rs_token'])){
 		$memToken = $result[0]["mem_token"];
 
 		// 1.儲存session
-		$_SESSION["memNo"] = $memNo;
-		$_SESSION["memMail"] = $memMail;
-		$_SESSION["memFirstName"] =$memFirstName;
-		$_SESSION["memLastName"] =$memLastName;
+		$_SESSION["rs_memNo"] = $memNo;
+		$_SESSION["rs_memMail"] = $memMail;
+		$_SESSION["rs_memFirstName"] =$memFirstName;
+		$_SESSION["rs_memLastName"] =$memLastName;
 		// 2.儲存登入時間和update 
 		$item= array(
 			"mem_no" => $memNo,
@@ -75,10 +75,10 @@ if(isset($_COOKIE['rs_token'])){
 		setcookie("rs_token","",time()+(60*60*24*30*12),"/");
 
 		//刪除session資訊
-		unset( $_SESSION["memNo"] ); 
-		unset( $_SESSION["memMail"] ); 
-		unset( $_SESSION["memFirstName"] ); 
-		unset( $_SESSION["memLastName"] );
+		unset( $_SESSION["rs_memNo"] ); 
+		unset( $_SESSION["rs_memMail"] ); 
+		unset( $_SESSION["rs_memFirstName"] ); 
+		unset( $_SESSION["rs_memLastName"] );
 	}
 }
 

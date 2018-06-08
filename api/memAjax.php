@@ -9,7 +9,7 @@ include("../class/memClass.php");
 
 // ====ip get======
 
- 
+
 if (!function_exists('eregi'))
 {
     function eregi($pattern, $string)
@@ -99,20 +99,20 @@ switch ($_REQUEST["status"]) {
 	case "memUpdate":
 		$table = "member";
 		$memNo = $_REQUEST["mem_no"];
-		$memMail = isset($_REQUEST["mem_mail"])? $_REQUEST["mem_mail"] : null  ;
+		$memMail = $_REQUEST["mem_email"];
 		$memPsw = isset($_REQUEST["mem_password"])? md5($_REQUEST["mem_password"]) : null  ;
 		$memTel = isset($_REQUEST["mem_tel"]) ? $_REQUEST["mem_tel"] : null ;
 		$memLastName = isset($_REQUEST["mem_lastname"]) ? $_REQUEST["mem_lastname"] : null;
 		$memFirstName = isset($_REQUEST["mem_firstname"]) ? $_REQUEST["mem_firstname"] : null ;
 		$memNote = isset($_REQUEST["mem_note"])? $_REQUEST["mem_note"] : null ;
-		$memToken = isset($_REQUEST["rs_token"]) ? $_REQUEST["rs_token"] : null ;
+		$memToken = isset($_REQUEST["rs_token"]) ? md5($memNo.$memMail) : null ;
 		$memLoginTime = isset($_REQUEST["mem_LoginTime"]) ? time() : null ;
 		$memLoginIp = isset($_REQUEST["mem_LoginIp"]) ? $ipAdd : null ;
 		
 		$item = array(
 			"mem_no" => $memNo,
 		);
-		!$memMail ? null : $item["mem_mail"] = $memMail;
+		// !$memMail ? null : $item["mem_email"] = $memMail;
 		!$memPsw ? null : $item["mem_password"] = $memPsw;
 		!$memTel ? null : $item["mem_tel"] = $memTel;
 		!$memLastName ? null : $item["mem_lastname"] = $memLastName;
@@ -133,12 +133,74 @@ switch ($_REQUEST["status"]) {
 		}
 
 		break;
+
+	case "memLoginFirstCheck" : 
+		$table = "member";
+		$memMail = $_REQUEST["mem_email"];
+		$memPsw = md5($_REQUEST["mem_password"]);
+		$user = new userObj();
+		$result = $user -> memLoginCheck( $memMail , $memPsw );
+		if( $result ){
+			echo json_encode( $result ) ; //確認
+		}else{
+			echo false ; //帳密錯誤
+		}
+		break;
 	case "memLogin" : 
 		$table = "member";
-		$memNo = $_REQUEST["mem_no"];
-		$user = new userObj($memNo);
-		print_r($user->brief());
+		$memMail = $_REQUEST["mem_email"];
+		$memPsw = md5($_REQUEST["mem_password"]);
+		$user = new userObj();
+		$result = $user -> memLoginCheck( $memMail , $memPsw );
+		if( $result ){
+			// echo json_encode( $result ) ; //確認
+			if( $result[0]['mem_status'] == 0){
+				echo json_encode('denied');
+			}else{
+				$memNo = $result[0]["mem_no"];
+				$memMail = $result[0]["mem_email"];
+				$memFirstName = $result[0]["mem_firstname"];
+				$memLastName = $result[0]["mem_lastname"];
+				$memToken = $result[0]["mem_token"];
+
+				// 1.儲存session
+				$_SESSION["rs_memNo"] = $memNo;
+				$_SESSION["rs_memMail"] = $memMail;
+				$_SESSION["rs_memFirstName"] =$memFirstName;
+				$_SESSION["rs_memLastName"] =$memLastName;
+
+				// 2.儲存登入時間和update 
+				$item= array(
+					"mem_no" => $memNo,
+					"mem_lastLoginTime" =>time(),
+					"mem_loginIP" => $ipAdd
+				);
+				$checkColumn = array("mem_no");
+				$user = new userObj($memNo);
+				$edit = $user->editMem( $table , $item , $checkColumn );
+				if($edit){ //儲存成功
+				// =====儲存3. cookie memToken====
+					setcookie("rs_token",$memToken,time()+(60*60*24*30*12),"/");
+				}
+				echo json_encode(true);
+			}
+			
+		}else{
+			echo json_encode(false) ; //帳密錯誤
+		}
 		break;
+		
+		case "memLogout" : 
+			//session
+			unset( $_SESSION["rs_memNo"] ); 
+			unset( $_SESSION["rs_memMail"] ); 
+			unset( $_SESSION["rs_memFirstName"] ); 
+			unset( $_SESSION["rs_memLastName"] );
+
+			//cookie移除
+			setcookie("rs_token","",time()+(60*60*24*30*12),"/");
+		break;
+
 	//=======發送mail==========
 	case "sendOrderMail":		
 		$orderNo = $_REQUEST["order_no"];
