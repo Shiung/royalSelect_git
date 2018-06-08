@@ -8,6 +8,7 @@ include("config.php");
 include("model/DB.php");
 include("class/productClass.php");
 include("class/orderClass.php");
+include("class/memClass.php");
 
 // ===檢查客戶端是否有關閉cookie=====
 // 先儲存cookie確認碼
@@ -31,6 +32,9 @@ if(isset($_SESSION["rs_memNo"]) === false){
 	}	
 }else{
 	$userStatus = 'active';
+	$rs_memNo = $_SESSION["rs_memNo"];
+	$user = new userObj($rs_memNo);
+	$userObj = $user -> brief();
 }
 
 ?>

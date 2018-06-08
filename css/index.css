@@ -158,8 +158,10 @@ header{
 	left: 0;
 	cursor: default;
 }
-#loginBox a{
+#loginBox a,
+.checkMember .forgetPass{
 	color:#db363d;
+	font-size:12px;
 }
 
 

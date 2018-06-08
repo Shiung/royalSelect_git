@@ -182,6 +182,70 @@ $(document).ready(function(){
 
 	// deliver.php
 
+	// 登入按鈕
+	$("#shopLoginBtn").click(function(){
+		var emailReg = /^\w+((-\w+)|(\.\w+))*\@[\w]+((\.|-)[\w]+)*\.[A-Za-z]+$/; 
+		var pswReg = /^(?=^.{6,}$)((?=.*\w)(?=.*\d)(?=.*[A-Za-z]))^.*$/;
+		var mail = $("#LoginEmail").val().trim();
+		var psw = $("#LoginPassword").val().trim();
+		//1.會員帳號確認是否存在
+		var memCheck ;
+		if( registerMemCheck(mail) ){
+			memCheck = 1 ; //無此會員帳號
+		}else{
+			memCheck = 2 ; //有此會員帳號
+		}
+
+		if( emailReg.test(mail) === false ){
+			swal({
+			  title: "請輸入有效E-Mail",
+			  icon: "error",
+			}).then( function(confrim) {
+				$("#loginBox .modal-body form #login-username").siblings(".label-custom").addClass("active");
+				$("#loginBox .modal-body form #login-username").select();
+			});
+		}else if( memCheck == 1 ){
+			swal({
+				title: "查無此會員帳號",
+				icon: "error",
+			  }).then( function(confrim) {
+				  $("#loginBox .modal-body form #login-username").siblings(".label-custom").addClass("active");
+				  $("#loginBox .modal-body form #login-username").select();
+			  });
+		}else if( pswReg.test(psw) === false  ){
+			swal({
+				title: "請輸入英數碼六位數以上",
+				icon: "error",
+			}).then( function(confrim) {
+				$("#loginBox .modal-body form #login-password").siblings(".label-custom").addClass("active");
+				$("#loginBox .modal-body form #login-password").select();
+			});
+		}else{
+			//紀錄 session狀態儲存 會在資訊頁面刪除
+			var checkStatus ="checkSessionKey";
+			$.ajax({
+				url : "api/cartAjax.php",
+				type : "get",
+				data : {status : checkStatus },
+				cache : false,
+				success : function(result){	
+				},
+				error : function(error){
+					alert("key失敗");
+				} 
+			});
+			login( mail , psw );
+		}
+	});
+	
+	// 首購
+	$("#firstShopBtn").click(function(){
+		$(".infoBox").css("opacity","0");
+		$(".infoBox").show(0);
+		$(".checkMember").hide(0);
+		$(".infoBox").animate({opacity:'1'},500);
+	});
+
 	//公司發票內容
 	$("input[name='invoiceSelect']").click(function(){
 		$("div.invoiceInfo").show();
@@ -212,7 +276,7 @@ $(document).ready(function(){
 		e.preventDefault();
 	var emailReg = /^\w+((-\w+)|(\.\w+))*\@[\w]+((\.|-)[\w]+)*\.[A-Za-z]+$/; 
 	var pswReg =  /^(?=^.{6,}$)((?=.*[0-9])(?=.*[a-z|A-Z]))^.*$/; //password
-	// var memNOcheck = $("input#memberNo").val();
+	var memNOcheck = $("input#memberNo").val();
 	var modelId = $("input[name='model_id']").val().trim();
 	var orderEmail = $("input#memberEmail").val().trim();
 	
@@ -294,10 +358,76 @@ $(document).ready(function(){
 			if(orderInvoiceAddress == "" && $("input#invoiceCheck").prop("checked") === false){$("input#orderInvoiceAddress").css("backgroundColor","#f45042");}
 		});
 	}else{
+		//=====確認首購=====		
+		if( memNOcheck == undefined ){ //首購 進行帳密確認並新增會員
+			//帳號重複確認
+			var memCheck = '';
+			if( registerMemCheck(orderEmail) ){
+				memCheck = 1 ; //新會員
+			}else{
+				memCheck = 2 ; //會員帳號重複
+			}
+			var psw = $("input#memberPassword").val().trim();
+			var pswRecheck = $("input#memberPasswordAgain").val().trim();
+			if( memCheck == 2 ){
+				swal({
+					title: "帳號已經使用，請再次確認",
+					icon: "error",
+				  }).then( function(confrim) {
+					  $("input#memberEmail").select();
+				  });
+				  return;
+			}else if( pswReg.test(psw) === false ){
+				swal({
+				  title: "請輸入英數碼六位數以上",
+				  icon: "error",
+				}).then( function(confrim) {
+					$("input#memberPassword").select();
+				});
+				return;
+			}else if( psw != pswRecheck){
+				swal({
+				  title: "請確認輸入的'確認密碼'與'密碼'相同",
+				  icon: "error",
+				}).then( function(confrim) {
+					$("input#memberPasswordAgain").select();
+				});
+				return;
+			}else{
+				//新增會員
+				var newMemNo = registerMemCreate( orderEmail , psw , orderLastName , orderFirstName ,  orderTel );
+				if( !newMemNo ){
+					swal({
+						title: "帳號建立失敗",
+						icon: "error",
+					}).then( function(confrim) {                           
+					});
+					return 
+				}else{
+					//memNo,memMail,psw,tel,lastName,firstname,note,memToken,loginTime,loginIp
+					if( memUpdate(newMemNo,orderEmail,null,null,null,null,null,true,null,null) ){ //更新mem_token 
+						//儲存cookie 和session 
+						if(memSessionAndCookie( orderEmail , psw )){
+						}else{
+							alert("登入失敗");
+						}
+					}else{
+						alert("更新失敗");
+					}
+					
+					//發信
+					// newMemSendMail( userMail , userLastName , userFirstName , userTel ); //公司內部通知 and userEDM
+					memNO = newMemNo ;
+				}
+			}
+
+		}else{
+			memNO = memNOcheck.trim();
+		} 	
 		// ====個人資訊=====
 		var orderRecipient = orderLastName + orderFirstName;
 		var purchaseInfo = [];
-		purchaseInfo.push(null); //0  memNO
+		purchaseInfo.push(memNO); //0  memNO
 		purchaseInfo.push(orderEmail); //1
 	 	purchaseInfo.push(orderRecipient); //2
 		purchaseInfo.push(orderAddress); //3
@@ -382,6 +512,10 @@ $(document).ready(function(){
 						$("input[name='order_member_tel']").val(orderTel);
 						$("input[name='order_member_email']").val(orderEmail);
 						// $("form#checkoutForm").submit();
+						
+						//test
+						location.reload();
+						//test
 					});			
 	   		});
 			

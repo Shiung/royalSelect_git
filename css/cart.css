@@ -112,6 +112,74 @@ label[for='invoiceCheck']{
     padding-left: 0;
     vertical-align: text-top;
 }
+
+/* 購物車結帳頁面登入 */
+.checkMember .loginPanel ,
+.checkMember .firstShop{
+	border: 2px solid #dbb878;
+	padding: 20px;
+	min-height: 250px;
+}
+.checkMember .loginPanel  button ,
+.checkMember .firstShop  button{
+	background-color: #dbb878;
+    border-color: #dbb878;
+    color:#fff;
+    transition: .3s;
+    cursor: pointer;
+} 
+.checkMember .loginPanel  button:hover ,
+.checkMember .firstShop  button:hover{
+	background-color: #fff;
+	color:#dbb878;
+	border-color:#dbb878;
+}
+.checkMember .loginPanel  button:focus ,
+.checkMember .firstShop  button:focus{
+	box-shadow:none;
+}
+
+.checkMember .firstShop #firstShopTitle,
+.checkMember .loginPanel #loginTitle{
+	font-size: 18px;
+}
+.checkMember .firstShop .firstShopInfo{
+	margin: 50px 0;
+}
+.checkMember .loginPanel  button:not([disabled]):not(.disabled):active ,
+.checkMember .firstShop  button:not([disabled]):not(.disabled):active{
+	background-color: #dbb878;
+	color:#dbb878;
+	border-color:#dbb878;
+	box-shadow:none;
+}
+.checkMember .firstShop{
+	border-right :transparent;
+}
+.orderCharge{
+	position: relative;
+}
+@media screen and (max-width: 575px){
+	.checkMember .firstShop{
+		min-height: 140px;
+    	border-right: 2px solid #dbb878;
+	}
+	
+	.loginPanel{
+		min-height: 100px;
+    	border-top: transparent;
+	}
+
+	.checkMember .firstShop #firstShopTitle,.checkMember .loginPanel #loginTitle{
+		font-size: 16px;
+	}
+	.checkMember .firstShop .firstShopInfo{
+		margin:15px 0;
+	}
+}
+/* end購物車結帳頁面登入 */
+
+
 @media screen and ( min-width : 992px ){
 	.order-list{
 		position: absolute;
