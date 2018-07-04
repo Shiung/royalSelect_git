@@ -47,18 +47,6 @@ if(isset($_SESSION["rs_memNo"]) === false){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- fb og -->
-	<!-- <meta property="og:title" content="NEPLUS INTERACTIVE 奈普互動" />
-	<meta property="og:description" content="" />
-	<meta property="og:image" content="https://www.neplus.com.tw/img/logo.png" />
-	<meta property="og:image:width" content="400" />
-	<meta property="og:image:height" content="200" />
-	<meta property="og:site_name" content="NEPLUS INTERACTIVE 奈普互動" />
-	<meta property="og:type" content="website" />
-	<meta property="og:locale" content="zh_TW" />
-	<meta property="og:url" content="https://www.neplus.com.tw" /> -->
-	<!-- end fb og -->
-
     <!-- jquery -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

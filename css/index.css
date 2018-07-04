@@ -441,5 +441,18 @@ footer .first-area a:hover{
 	.nav-search {
 		margin-right: 5px;
 	}
+	#s3 .slick-prev,
+	#s3 .slick-next{
+		position: absolute;
+		z-index: 1;
+		background-color: #fff;
+	}
+	#s3 .slick-prev{
+		left: -15px;
+	}
+	#s3 .slick-next{
+		right: -15px;
+	}
+
 }
 
