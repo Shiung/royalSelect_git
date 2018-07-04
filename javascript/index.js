@@ -29,10 +29,26 @@ $(document).ready(function(){
 	  dots: false,
 	  // centerMode: true,
 	  focusOnSelect: true,
-	  autoplay: false,
+	  autoplay: true,
 	  autoplaySpeed: 2000,
 	  nextArrow: '<button type="button" class="slick-next"><i class="fas fa-caret-right"></i></button>',
-	  prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-caret-left"></i></button>'
+	  prevArrow: '<button type="button" class="slick-prev"><i class="fas fa-caret-left"></i></button>',
+	  responsive: [{
+			breakpoint: 767,
+			settings: {
+				slidesToShow: 3
+			}
+		},{
+			breakpoint: 640,
+			settings: {
+				slidesToShow: 2
+			}
+		}, {
+			breakpoint: 320,
+			settings: {
+				infinite: true
+			}
+		}]
 	});
 
 	//產品轉址

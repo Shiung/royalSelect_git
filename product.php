@@ -161,9 +161,9 @@ foreach ($order as $okey => $ovalue) {
 	<div class="container">
 		<div class="col-12">
 			<nav class="nav-tap-box nav nav-pills flex-column flex-sm-row justify-content-center">
-			  <a class="flex-sm-fill text-sm-center nav-link active" href="#!">商品特色</a>
-			  <a class="flex-sm-fill text-sm-center nav-link" href="#!">運貨須知</a>
-			  <a class="flex-sm-fill text-sm-center nav-link" href="#!">退貨須知</a>
+			  <a class="flex-sm-fill text-center nav-link active" href="#!">商品特色</a>
+			  <a class="flex-sm-fill text-center nav-link" href="#!">運貨須知</a>
+			  <a class="flex-sm-fill text-center nav-link" href="#!">退貨須知</a>
 			</nav>
 		</div>
 
@@ -176,8 +176,11 @@ foreach ($order as $okey => $ovalue) {
 					</div>
 					
 				</div>
-				<div class="col-lg-5 content-sec">
+				<!-- <div class="col-lg-5 content-sec">
 					<iframe width="100%" height="315" src="https://www.youtube.com/embed/Zqgca5c2thc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</div> -->
+				<div class="col-lg-5 col-12 embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Zqgca5c2thc" allowfullscreen></iframe>
 				</div>
 
 				<div class="col-lg-7 content-sec">
