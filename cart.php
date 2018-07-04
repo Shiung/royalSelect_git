@@ -49,14 +49,14 @@ include("module/header.php") ;
 			foreach ($oList as $key => $value) {	
 		?>
 			<div class="cart-area row">
-				<div class="col-2">
+				<div class="col-sm-2">
 					<div class="img-box">
 						<div class="img-box-area"  style="background-image: url('<?php echo "img/product/".$value['img1']; ?>');">
 						</div>
 					</div>
 				</div>	
 
-				<div class="col-6">
+				<div class="col-sm-6">
 					<div class="product-title">
 						<?php echo $value['product_name']; ?><span class="productStatusTag">團購中</span>
 					</div>
@@ -65,7 +65,7 @@ include("module/header.php") ;
 					</div>
 				</div>	
 
-				<div class="col-4">
+				<div class="col-sm-4">
 					<select class="custom-select col-12" id="product-spec-select">
 					<?php foreach ($value["specList"] as $skey => $svalue) { 
 						$specSelected = "";
